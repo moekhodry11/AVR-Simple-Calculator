@@ -9,3 +9,5 @@ To use the calculator, simply enter the numbers and operations using the keypad.
 
 # Contributing
 Contributions to this project are welcome! If you find any bugs or want to add new features, feel free to submit a pull request. Before submitting, please make sure to test your changes thoroughly and follow the code formatting and commenting conventions.
+
+![image](https://user-images.githubusercontent.com/86708003/232625819-8978bcb8-76aa-4f61-bad1-d364fb3e681a.png)
