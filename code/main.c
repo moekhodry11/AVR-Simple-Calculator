@@ -48,14 +48,14 @@ int main(void) {
 			// Store first number and operator
 			LCD_voidSendChar(key);
 			num1 = stringToNumber(buffer);
-			memset(buffer, 0, sizeof(buffer));//clear buffer
+			memset(buffer, 0, sizeof(buffer));	//clear buffer
 			op = key;
 			buffer_pos = 0;
 		}
 
 		else if (key == '=') {
-			LCD_voidSendCmnd(LCD_CLEAR);//clear LCD to print output
-			flagClear = 1;//flag is up after evry process
+			//LCD_voidSendCmnd(LCD_CLEAR);//clear LCD to print output
+			flagClear = 1;	//flag is up after evry process
 			// Store the second number and perform the calculation
 			num2 = stringToNumber(buffer);
 			memset(buffer, 0, sizeof(buffer));
@@ -73,6 +73,7 @@ int main(void) {
 				result = num1 / num2;
 				break;
 			}
+			LCD_voidSendChar('=');
 			if (result < 0) {
 				result *= -1;
 				LCD_voidSendChar('-');

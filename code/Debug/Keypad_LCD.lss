@@ -3765,7 +3765,7 @@ _delay_ms(double __ms)
 
 		/* Display ON OFF Control */
 		LCD_voidSendCmnd(lcd_DisplayOn);
-    19be:	8c e0       	ldi	r24, 0x0C	; 12
+    19be:	8f e0       	ldi	r24, 0x0F	; 15
     19c0:	0e 94 4a 0e 	call	0x1c94	; 0x1c94 <LCD_voidSendCmnd>
     19c4:	80 e0       	ldi	r24, 0x00	; 0
     19c6:	90 e0       	ldi	r25, 0x00	; 0
@@ -5688,7 +5688,7 @@ int main(void) {
     2560:	0e 94 85 13 	call	0x270a	; 0x270a <stringToNumber>
     2564:	90 93 9b 00 	sts	0x009B, r25
     2568:	80 93 9a 00 	sts	0x009A, r24
-			memset(buffer, 0, sizeof(buffer));//clear buffer
+			memset(buffer, 0, sizeof(buffer));	//clear buffer
     256c:	88 e8       	ldi	r24, 0x88	; 136
     256e:	90 e0       	ldi	r25, 0x00	; 0
     2570:	60 e0       	ldi	r22, 0x00	; 0
@@ -5709,115 +5709,116 @@ int main(void) {
     258a:	8d 33       	cpi	r24, 0x3D	; 61
     258c:	09 f0       	breq	.+2      	; 0x2590 <main+0xfa>
     258e:	ab c0       	rjmp	.+342    	; 0x26e6 <main+0x250>
-			LCD_voidSendCmnd(LCD_CLEAR);//clear LCD to print output
+			//LCD_voidSendCmnd(LCD_CLEAR);//clear LCD to print output
+			flagClear = 1;	//flag is up after evry process
     2590:	81 e0       	ldi	r24, 0x01	; 1
-    2592:	0e 94 4a 0e 	call	0x1c94	; 0x1c94 <LCD_voidSendCmnd>
-			flagClear = 1;//flag is up after evry process
-    2596:	81 e0       	ldi	r24, 0x01	; 1
-    2598:	80 93 98 00 	sts	0x0098, r24
+    2592:	80 93 98 00 	sts	0x0098, r24
 			// Store the second number and perform the calculation
 			num2 = stringToNumber(buffer);
-    259c:	88 e8       	ldi	r24, 0x88	; 136
-    259e:	90 e0       	ldi	r25, 0x00	; 0
-    25a0:	0e 94 85 13 	call	0x270a	; 0x270a <stringToNumber>
-    25a4:	90 93 9d 00 	sts	0x009D, r25
-    25a8:	80 93 9c 00 	sts	0x009C, r24
+    2596:	88 e8       	ldi	r24, 0x88	; 136
+    2598:	90 e0       	ldi	r25, 0x00	; 0
+    259a:	0e 94 85 13 	call	0x270a	; 0x270a <stringToNumber>
+    259e:	90 93 9d 00 	sts	0x009D, r25
+    25a2:	80 93 9c 00 	sts	0x009C, r24
 			memset(buffer, 0, sizeof(buffer));
-    25ac:	88 e8       	ldi	r24, 0x88	; 136
-    25ae:	90 e0       	ldi	r25, 0x00	; 0
-    25b0:	60 e0       	ldi	r22, 0x00	; 0
-    25b2:	70 e0       	ldi	r23, 0x00	; 0
-    25b4:	40 e1       	ldi	r20, 0x10	; 16
-    25b6:	50 e0       	ldi	r21, 0x00	; 0
-    25b8:	0e 94 d4 14 	call	0x29a8	; 0x29a8 <memset>
+    25a6:	88 e8       	ldi	r24, 0x88	; 136
+    25a8:	90 e0       	ldi	r25, 0x00	; 0
+    25aa:	60 e0       	ldi	r22, 0x00	; 0
+    25ac:	70 e0       	ldi	r23, 0x00	; 0
+    25ae:	40 e1       	ldi	r20, 0x10	; 16
+    25b0:	50 e0       	ldi	r21, 0x00	; 0
+    25b2:	0e 94 d4 14 	call	0x29a8	; 0x29a8 <memset>
 			switch (op) {
-    25bc:	80 91 a0 00 	lds	r24, 0x00A0
-    25c0:	28 2f       	mov	r18, r24
-    25c2:	30 e0       	ldi	r19, 0x00	; 0
-    25c4:	3b 8b       	std	Y+19, r19	; 0x13
-    25c6:	2a 8b       	std	Y+18, r18	; 0x12
-    25c8:	4a 89       	ldd	r20, Y+18	; 0x12
-    25ca:	5b 89       	ldd	r21, Y+19	; 0x13
-    25cc:	4b 32       	cpi	r20, 0x2B	; 43
-    25ce:	51 05       	cpc	r21, r1
-    25d0:	b1 f0       	breq	.+44     	; 0x25fe <main+0x168>
-    25d2:	8a 89       	ldd	r24, Y+18	; 0x12
-    25d4:	9b 89       	ldd	r25, Y+19	; 0x13
-    25d6:	8c 32       	cpi	r24, 0x2C	; 44
-    25d8:	91 05       	cpc	r25, r1
-    25da:	34 f4       	brge	.+12     	; 0x25e8 <main+0x152>
-    25dc:	2a 89       	ldd	r18, Y+18	; 0x12
-    25de:	3b 89       	ldd	r19, Y+19	; 0x13
-    25e0:	2a 32       	cpi	r18, 0x2A	; 42
-    25e2:	31 05       	cpc	r19, r1
-    25e4:	51 f1       	breq	.+84     	; 0x263a <main+0x1a4>
-    25e6:	4e c0       	rjmp	.+156    	; 0x2684 <main+0x1ee>
-    25e8:	4a 89       	ldd	r20, Y+18	; 0x12
-    25ea:	5b 89       	ldd	r21, Y+19	; 0x13
-    25ec:	4d 32       	cpi	r20, 0x2D	; 45
-    25ee:	51 05       	cpc	r21, r1
-    25f0:	a9 f0       	breq	.+42     	; 0x261c <main+0x186>
-    25f2:	8a 89       	ldd	r24, Y+18	; 0x12
-    25f4:	9b 89       	ldd	r25, Y+19	; 0x13
-    25f6:	8f 32       	cpi	r24, 0x2F	; 47
-    25f8:	91 05       	cpc	r25, r1
-    25fa:	a1 f1       	breq	.+104    	; 0x2664 <main+0x1ce>
-    25fc:	43 c0       	rjmp	.+134    	; 0x2684 <main+0x1ee>
+    25b6:	80 91 a0 00 	lds	r24, 0x00A0
+    25ba:	28 2f       	mov	r18, r24
+    25bc:	30 e0       	ldi	r19, 0x00	; 0
+    25be:	3b 8b       	std	Y+19, r19	; 0x13
+    25c0:	2a 8b       	std	Y+18, r18	; 0x12
+    25c2:	4a 89       	ldd	r20, Y+18	; 0x12
+    25c4:	5b 89       	ldd	r21, Y+19	; 0x13
+    25c6:	4b 32       	cpi	r20, 0x2B	; 43
+    25c8:	51 05       	cpc	r21, r1
+    25ca:	b1 f0       	breq	.+44     	; 0x25f8 <main+0x162>
+    25cc:	8a 89       	ldd	r24, Y+18	; 0x12
+    25ce:	9b 89       	ldd	r25, Y+19	; 0x13
+    25d0:	8c 32       	cpi	r24, 0x2C	; 44
+    25d2:	91 05       	cpc	r25, r1
+    25d4:	34 f4       	brge	.+12     	; 0x25e2 <main+0x14c>
+    25d6:	2a 89       	ldd	r18, Y+18	; 0x12
+    25d8:	3b 89       	ldd	r19, Y+19	; 0x13
+    25da:	2a 32       	cpi	r18, 0x2A	; 42
+    25dc:	31 05       	cpc	r19, r1
+    25de:	51 f1       	breq	.+84     	; 0x2634 <main+0x19e>
+    25e0:	4e c0       	rjmp	.+156    	; 0x267e <main+0x1e8>
+    25e2:	4a 89       	ldd	r20, Y+18	; 0x12
+    25e4:	5b 89       	ldd	r21, Y+19	; 0x13
+    25e6:	4d 32       	cpi	r20, 0x2D	; 45
+    25e8:	51 05       	cpc	r21, r1
+    25ea:	a9 f0       	breq	.+42     	; 0x2616 <main+0x180>
+    25ec:	8a 89       	ldd	r24, Y+18	; 0x12
+    25ee:	9b 89       	ldd	r25, Y+19	; 0x13
+    25f0:	8f 32       	cpi	r24, 0x2F	; 47
+    25f2:	91 05       	cpc	r25, r1
+    25f4:	a1 f1       	breq	.+104    	; 0x265e <main+0x1c8>
+    25f6:	43 c0       	rjmp	.+134    	; 0x267e <main+0x1e8>
 			case '+':
 				result = num1 + num2;
-    25fe:	80 91 9a 00 	lds	r24, 0x009A
-    2602:	90 91 9b 00 	lds	r25, 0x009B
-    2606:	20 91 9c 00 	lds	r18, 0x009C
-    260a:	30 91 9d 00 	lds	r19, 0x009D
-    260e:	82 0f       	add	r24, r18
-    2610:	93 1f       	adc	r25, r19
-    2612:	90 93 9f 00 	sts	0x009F, r25
-    2616:	80 93 9e 00 	sts	0x009E, r24
-    261a:	34 c0       	rjmp	.+104    	; 0x2684 <main+0x1ee>
+    25f8:	80 91 9a 00 	lds	r24, 0x009A
+    25fc:	90 91 9b 00 	lds	r25, 0x009B
+    2600:	20 91 9c 00 	lds	r18, 0x009C
+    2604:	30 91 9d 00 	lds	r19, 0x009D
+    2608:	82 0f       	add	r24, r18
+    260a:	93 1f       	adc	r25, r19
+    260c:	90 93 9f 00 	sts	0x009F, r25
+    2610:	80 93 9e 00 	sts	0x009E, r24
+    2614:	34 c0       	rjmp	.+104    	; 0x267e <main+0x1e8>
 				break;
 			case '-':
 				result = num1 - num2;
-    261c:	80 91 9a 00 	lds	r24, 0x009A
-    2620:	90 91 9b 00 	lds	r25, 0x009B
-    2624:	20 91 9c 00 	lds	r18, 0x009C
-    2628:	30 91 9d 00 	lds	r19, 0x009D
-    262c:	82 1b       	sub	r24, r18
-    262e:	93 0b       	sbc	r25, r19
-    2630:	90 93 9f 00 	sts	0x009F, r25
-    2634:	80 93 9e 00 	sts	0x009E, r24
-    2638:	25 c0       	rjmp	.+74     	; 0x2684 <main+0x1ee>
+    2616:	80 91 9a 00 	lds	r24, 0x009A
+    261a:	90 91 9b 00 	lds	r25, 0x009B
+    261e:	20 91 9c 00 	lds	r18, 0x009C
+    2622:	30 91 9d 00 	lds	r19, 0x009D
+    2626:	82 1b       	sub	r24, r18
+    2628:	93 0b       	sbc	r25, r19
+    262a:	90 93 9f 00 	sts	0x009F, r25
+    262e:	80 93 9e 00 	sts	0x009E, r24
+    2632:	25 c0       	rjmp	.+74     	; 0x267e <main+0x1e8>
 				break;
 			case '*':
 				result = num1 * num2;
-    263a:	80 91 9a 00 	lds	r24, 0x009A
-    263e:	90 91 9b 00 	lds	r25, 0x009B
-    2642:	20 91 9c 00 	lds	r18, 0x009C
-    2646:	30 91 9d 00 	lds	r19, 0x009D
-    264a:	ac 01       	movw	r20, r24
-    264c:	42 9f       	mul	r20, r18
-    264e:	c0 01       	movw	r24, r0
-    2650:	43 9f       	mul	r20, r19
-    2652:	90 0d       	add	r25, r0
-    2654:	52 9f       	mul	r21, r18
-    2656:	90 0d       	add	r25, r0
-    2658:	11 24       	eor	r1, r1
-    265a:	90 93 9f 00 	sts	0x009F, r25
-    265e:	80 93 9e 00 	sts	0x009E, r24
-    2662:	10 c0       	rjmp	.+32     	; 0x2684 <main+0x1ee>
+    2634:	80 91 9a 00 	lds	r24, 0x009A
+    2638:	90 91 9b 00 	lds	r25, 0x009B
+    263c:	20 91 9c 00 	lds	r18, 0x009C
+    2640:	30 91 9d 00 	lds	r19, 0x009D
+    2644:	ac 01       	movw	r20, r24
+    2646:	42 9f       	mul	r20, r18
+    2648:	c0 01       	movw	r24, r0
+    264a:	43 9f       	mul	r20, r19
+    264c:	90 0d       	add	r25, r0
+    264e:	52 9f       	mul	r21, r18
+    2650:	90 0d       	add	r25, r0
+    2652:	11 24       	eor	r1, r1
+    2654:	90 93 9f 00 	sts	0x009F, r25
+    2658:	80 93 9e 00 	sts	0x009E, r24
+    265c:	10 c0       	rjmp	.+32     	; 0x267e <main+0x1e8>
 				break;
 			case '/':
 				result = num1 / num2;
-    2664:	80 91 9a 00 	lds	r24, 0x009A
-    2668:	90 91 9b 00 	lds	r25, 0x009B
-    266c:	20 91 9c 00 	lds	r18, 0x009C
-    2670:	30 91 9d 00 	lds	r19, 0x009D
-    2674:	b9 01       	movw	r22, r18
-    2676:	0e 94 8a 14 	call	0x2914	; 0x2914 <__divmodhi4>
-    267a:	cb 01       	movw	r24, r22
-    267c:	90 93 9f 00 	sts	0x009F, r25
-    2680:	80 93 9e 00 	sts	0x009E, r24
+    265e:	80 91 9a 00 	lds	r24, 0x009A
+    2662:	90 91 9b 00 	lds	r25, 0x009B
+    2666:	20 91 9c 00 	lds	r18, 0x009C
+    266a:	30 91 9d 00 	lds	r19, 0x009D
+    266e:	b9 01       	movw	r22, r18
+    2670:	0e 94 8a 14 	call	0x2914	; 0x2914 <__divmodhi4>
+    2674:	cb 01       	movw	r24, r22
+    2676:	90 93 9f 00 	sts	0x009F, r25
+    267a:	80 93 9e 00 	sts	0x009E, r24
 				break;
 			}
+			LCD_voidSendChar('=');
+    267e:	8d e3       	ldi	r24, 0x3D	; 61
+    2680:	0e 94 6c 0f 	call	0x1ed8	; 0x1ed8 <LCD_voidSendChar>
 			if (result < 0) {
     2684:	80 91 9e 00 	lds	r24, 0x009E
     2688:	90 91 9f 00 	lds	r25, 0x009F
