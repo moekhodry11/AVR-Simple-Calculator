@@ -1,3 +1,10 @@
+/****************************************************************/
+/***************  Name   : Mohamed Khodary **********************/
+/***************  Date   : 27/04/2023      **********************/
+/***************  SWC    : Simple Calc     **********************/
+/*************** Version : 1.1             **********************/
+/****************************************************************/
+
 /* Lib layer */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
@@ -27,10 +34,7 @@ u16 stringToNumber(u8 *str);
 int main(void) {
 	DIO_voidInit();
 	LCD_voidInit();
-	LCD_voidGotoxy(1, 1);
-
 	u8 key;
-	LCD_voidSendChar(key);
 	while (1) {
 
 		KPD_u8GetKeyState(&key);
@@ -42,10 +46,12 @@ int main(void) {
 				LCD_voidSendCmnd(LCD_CLEAR);
 				flagClear = 0;
 			}
+			LCD_voidSendCmnd(LCD_CLEAR);
 			buffer[buffer_pos++] = key;
 			LCD_voidSendChar(key);
 		} else if (key == '+' || key == '-' || key == '*' || key == '/') {
 			// Store first number and operator
+			LCD_voidSendCmnd(LCD_CLEAR);
 			LCD_voidSendChar(key);
 			num1 = stringToNumber(buffer);
 			memset(buffer, 0, sizeof(buffer));	//clear buffer
@@ -73,7 +79,8 @@ int main(void) {
 				result = num1 / num2;
 				break;
 			}
-			LCD_voidSendChar('=');
+			LCD_voidSendCmnd(LCD_CLEAR);
+			//LCD_voidSendChar('=');
 			if (result < 0) {
 				result *= -1;
 				LCD_voidSendChar('-');

@@ -151,7 +151,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x29ba
+.text           0x00000000     0x29b8
  *(.vectors)
  .vectors       0x00000000       0x54 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
                 0x00000000                __vectors
@@ -309,34 +309,34 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .text.LCD_voidWriteSpecialCharacter
                 0x00002416       0x80 ./LCD_program.o
                 0x00002416                LCD_voidWriteSpecialCharacter
- .text.main     0x00002496      0x274 ./main.o
+ .text.main     0x00002496      0x272 ./main.o
                 0x00002496                main
  .text.stringToNumber
-                0x0000270a       0xcc ./main.o
-                0x0000270a                stringToNumber
+                0x00002708       0xcc ./main.o
+                0x00002708                stringToNumber
  .text.numberToString
-                0x000027d6      0x116 ./main.o
-                0x000027d6                numberToString
- .text.libgcc   0x000028ec       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
-                0x000028ec                __udivmodhi4
- .text.libgcc   0x00002914       0x26 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
-                0x00002914                __divmodhi4
-                0x00002914                _div
- .text.libgcc   0x0000293a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x0000293a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x0000293a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x0000293a       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x0000293a                __prologue_saves__
- .text.libgcc   0x00002972       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00002972                __epilogue_restores__
+                0x000027d4      0x116 ./main.o
+                0x000027d4                numberToString
+ .text.libgcc   0x000028ea       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x000028ea                __udivmodhi4
+ .text.libgcc   0x00002912       0x26 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+                0x00002912                __divmodhi4
+                0x00002912                _div
+ .text.libgcc   0x00002938        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00002938        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00002938        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00002938       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00002938                __prologue_saves__
+ .text.libgcc   0x00002970       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00002970                __epilogue_restores__
  .text.avr-libc
-                0x000029a8        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
-                0x000029a8                memset
-                0x000029b6                . = ALIGN (0x2)
+                0x000029a6        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+                0x000029a6                memset
+                0x000029b4                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000029b6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x000029b6                exit
-                0x000029b6                _exit
+ .fini9         0x000029b4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000029b4                exit
+                0x000029b4                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -355,11 +355,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000029b6        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x000029b4        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000029ba                _etext = .
+                0x000029b8                _etext = .
 
-.data           0x00800060       0x28 load address 0x000029ba
+.data           0x00800060       0x28 load address 0x000029b8
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
@@ -453,8 +453,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x008000a0                op
  *(COMMON)
                 0x008000a1                PROVIDE (__bss_end, .)
-                0x000029ba                __data_load_start = LOADADDR (.data)
-                0x000029e2                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000029b8                __data_load_start = LOADADDR (.data)
+                0x000029e0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008000a1        0x0
                 0x008000a1                PROVIDE (__noinit_start, .)
