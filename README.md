@@ -11,4 +11,4 @@ To use the calculator, simply enter the numbers and operations using the keypad.
 Contributions to this project are welcome! If you find any bugs or want to add new features, feel free to submit a pull request. Before submitting, please make sure to test your changes thoroughly and follow the code formatting and commenting conventions.
 
 #
-![simple_calc](https://user-images.githubusercontent.com/86708003/234780566-4e10292f-1576-4d16-be74-85f31fff1e0d.gif)
+![simple_calc](https://camo.githubusercontent.com/dc70c3d9b1d3325255efc275ee49fdcddd74d0c6807f619f82de8a853320decd/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f76312e59326c6b505463354d4749334e6a45784e44686d4d7a4a685a6a56684e7a59775a6d4d305a54426b4d4759795a47457a4f474e6a597a45314d7a5a694e44417a4d6a646d4e435a6c634431324d563970626e526c636d35686246396e61575a7a583264705a6b6c6b4a6d4e305057632f394142326f4b70665843425a3970744338702f67697068792e676966)
